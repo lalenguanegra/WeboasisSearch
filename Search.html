@@ -1,0 +1,54 @@
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+<html>
+
+
+</head>
+<div>
+<img src="https://i.imgur.com/KaviyBw.png" width="300" height="100">
+</div>
+<body style="background-color:#339BFF;">
+</body>
+
+<script>
+function showResult(str) {
+  if (str.length==0) {
+    document.getElementById("livesearch").innerHTML="";
+    document.getElementById("livesearch").style.border="0px";
+    return;
+  }
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("livesearch").innerHTML=this.responseText;
+      document.getElementById("livesearch").style.border="0px solid #A5ACB2";
+    }
+  }
+  xmlhttp.open("GET","livesearch.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+
+
+
+<form>
+<input type="text" size="30" onkeyup="showResult(this.value)">
+<div id="livesearch"></div>
+</form>
+
+<style> 
+
+
+div {
+ 
+  text-align:center;
+
+}
+form {
+text-align:center;
+margin-top:10px;
+margin-left:30px;
+}
+</style>
+
+
+</html>
